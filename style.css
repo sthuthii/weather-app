@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #1e1e2e;
+    color: white;
+    margin: 0;
+    justify-content: center;
+  }
+  
+  .light-theme {
+    background: #f4f4f4;
+    color: black;
+  }
+  
+  .app-container {
+    padding: 20px;
+  }
+  
+  .weather-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 300px;
+  }
+  
+  .forecast-container {
+    display: flex; /* Aligns forecast items in a row */
+    justify-content: center; /* Centers them horizontally */
+    gap: 15px; /* Adds space between each box */
+    overflow-x: auto; /* Enables horizontal scrolling if needed */
+    padding: 10px;
+    white-space: nowrap; /* Prevents wrapping */
+  }
+  
+  .forecast-item {
+    background-color: rgba(255, 255, 255, 0.1); /* Light background */
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 120px; /* Ensures all boxes have equal width */
+  }
+  
+  .icon{
+    display: flex;
+    padding-left: 80px;
+  }
+  
+  input{
+    width: 270px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 10px;
+  }
+  
+  .iconss{
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+  }
+  
+  .btn{
+    margin: 10px;
+  }
+
+
+  
+  
+  
+  
+  
