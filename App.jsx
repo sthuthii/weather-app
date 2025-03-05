@@ -7,7 +7,11 @@ import Lottie from "lottie-react";
 import animationData from "./assets/loading.json";
 import "./style.css";
 
-const API_KEY = import.meta.env.VITE_API_KEY;
+
+
+const API_KEY = "ba79bcdab27db624d4e9893715874056"
+
+
 
 
 const App = () => {
