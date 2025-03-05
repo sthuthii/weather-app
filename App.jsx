@@ -4,10 +4,11 @@ import WeatherCard from "./WeatherCard";
 import Forecast from "./Forecast";
 import { FaSun, FaMoon, FaMapMarkerAlt, FaSearch } from "react-icons/fa";
 import Lottie from "lottie-react";
-import animationData from "/src/assets/loading.json";
+import animationData from "./assets/loading.json";
 import "./style.css";
 
-const API_KEY = "ba79bcdab27db624d4e9893715874056"; // Replace with your actual API key
+const API_KEY = import.meta.env.VITE_API_KEY;
+
 
 const App = () => {
   const [weatherData, setWeatherData] = useState(null);
@@ -15,10 +16,11 @@ const App = () => {
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem("theme") === "light" ? false : true
+    localStorage.getItem("theme") === "dark"
   );
 
   useEffect(() => {
+    console.log("API Key Loaded:", API_KEY);
     getLocation();
   }, []);
 
@@ -42,6 +44,10 @@ const App = () => {
   };
 
   const fetchWeather = async (lat, lon) => {
+    if (!API_KEY) {
+      console.error("API Key is missing. Check your .env file.");
+      return;
+    }
     setLoading(true);
     try {
       const response = await axios.get(
@@ -73,6 +79,10 @@ const App = () => {
   };
 
   const handleCitySearch = async () => {
+    if (!city) {
+      alert("Please enter a city name!");
+      return;
+    }
     try {
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
@@ -85,7 +95,7 @@ const App = () => {
   };
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    setIsDarkMode((prev) => !prev);
     document.body.classList.toggle("light-theme");
     localStorage.setItem("theme", isDarkMode ? "light" : "dark");
   };
@@ -105,12 +115,17 @@ const App = () => {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-        <button className="icnonss" onClick={handleCitySearch}>
+        <button className="icon-button" onClick={handleCitySearch}>
           <FaSearch />
         </button>
       </div>
       {loading ? (
-        <Lottie animationData={animationData} loop autoplay style={{ height: "200px", width: "200px" }} />
+        <Lottie
+          animationData={animationData}
+          loop
+          autoplay
+          style={{ height: "200px", width: "200px" }}
+        />
       ) : (
         <>
           {weatherData && <WeatherCard {...weatherData} />}

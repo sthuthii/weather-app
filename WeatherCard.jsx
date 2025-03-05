@@ -1,11 +1,11 @@
 import React from "react";
 import Lottie from "lottie-react";
-import clearAnimation from "/src/assets/clear_sky.json";
-import cloudsAnimation from "/src/assets/cloudy.json";
-import rainAnimation from "/src/assets/rain.json";
-import snowAnimation from "/src/assets/snow.json";
-import thunderstormAnimation from "/src/assets/thunder.json";
-import defaultAnimation from "/src/assets/clear_sky.json";
+import clearAnimation from "./assets/clear_sky.json";
+import cloudsAnimation from "./assets/cloudy.json";
+import rainAnimation from "./assets/rain.json";
+import snowAnimation from "./assets/snow.json";
+import thunderstormAnimation from "./assets/thunder.json";
+import defaultAnimation from "./assets/clear_sky.json";
 
 const WeatherCard = ({ city, temp, weather, humidity, wind }) => {
   const getAnimation = (weatherType) => {
